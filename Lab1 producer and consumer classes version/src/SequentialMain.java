@@ -19,13 +19,13 @@ public class SequentialMain {
         while (leftIndex + elementsNumToWrite <= arrayA.length) {
 
             // запись в буфер:
-            for (int bufferIndex = 0; bufferIndex < elementsNumToWrite; bufferIndex++) {
-                buffer[bufferIndex] = arrayA[leftIndex + bufferIndex];
+            if (elementsNumToWrite >= 0) {
+                System.arraycopy(arrayA, leftIndex, buffer, 0, elementsNumToWrite);
             }
 
             // перезапись из буфера в массив B:
-            for (int bufferIndex = 0; bufferIndex < elementsNumToWrite; bufferIndex++) {
-                arrayB[leftIndex + bufferIndex] = buffer[bufferIndex];
+            if (elementsNumToWrite >= 0) {
+                System.arraycopy(buffer, 0, arrayB, leftIndex, elementsNumToWrite);
             }
 
             leftIndex = leftIndex + buffer.length;
