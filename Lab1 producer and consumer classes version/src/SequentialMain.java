@@ -12,25 +12,25 @@ public class SequentialMain {
         int[] buffer = new int[Main.BUF_SIZE];
 
         int leftIndex = 0;
-        int rightIndex = buffer.length;
+        int elementsNumToWrite = buffer.length;
 
         final long start = System.currentTimeMillis();
 
-        while (leftIndex + rightIndex <= arrayA.length) {
+        while (leftIndex + elementsNumToWrite <= arrayA.length) {
 
             // запись в буфер:
-            for (int i = 0; i < rightIndex; i++) {
-                buffer[i] = arrayA[leftIndex + i];
+            for (int bufferIndex = 0; bufferIndex < elementsNumToWrite; bufferIndex++) {
+                buffer[bufferIndex] = arrayA[leftIndex + bufferIndex];
             }
 
             // перезапись из буфера в массив B:
-            for (int i = 0; i < rightIndex; i++) {
-                arrayB[leftIndex + i] = buffer[i];
+            for (int bufferIndex = 0; bufferIndex < elementsNumToWrite; bufferIndex++) {
+                arrayB[leftIndex + bufferIndex] = buffer[bufferIndex];
             }
 
             leftIndex = leftIndex + buffer.length;
             if (leftIndex + buffer.length > arrayA.length) {
-                rightIndex = arrayA.length - leftIndex;
+                elementsNumToWrite = arrayA.length - leftIndex;
             }
         }
 
