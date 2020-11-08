@@ -12,4 +12,23 @@ public class FilesComparatorThread extends Thread {
         this.file2 = file2;
         this.shouldItWorkInParallel = shouldItWorkInParallel;
     }
+
+    public void run() {
+
+        long start = System.currentTimeMillis();
+
+        if (shouldItWorkInParallel) {
+            runParallel();
+        } else {
+            runSequential();
+        }
+
+        file1.finish();
+        file2.finish();
+
+        long finish = System.currentTimeMillis();
+
+        long timeConsumedMillis = finish - start;
+        System.out.println("Time: " + timeConsumedMillis);
+    }
 }
