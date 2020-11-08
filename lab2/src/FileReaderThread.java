@@ -60,4 +60,11 @@ class FileReaderThread extends Thread {
             locker.unlock();
         }
     }
+
+    public void runReadLine() {
+        locker.lock();
+        isMyTurn = true;
+        readingNextLine.signal();
+        locker.unlock();
+    }
 }
