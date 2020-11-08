@@ -42,4 +42,33 @@ public class Buffer {
             locker.unlock();
         }
     }
+
+    public int read() throws InterruptedException {
+        locker.lock();
+        try {
+
+            int item;
+
+            // ждать пока буфер не заполнится:
+            if (bufferItemsNum == 0) {
+                bufferNotFull.await();
+            }
+
+            item = buffer[readingIndex];
+            readingIndex++;
+            bufferItemsNum--;
+
+            // для цикличности буфера:
+            if (readingIndex >= buffer.length) {
+                readingIndex = 0;
+            }
+
+            bufferNotEmpty.signalAll();
+
+            return item;
+
+        } finally {
+            locker.unlock();
+        }
+    }
 }
