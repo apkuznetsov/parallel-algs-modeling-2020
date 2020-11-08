@@ -4,12 +4,11 @@ public class SequentialMain {
 
         final int[] arrayA = new int[Main.ARR_SIZE];
         final int[] arrayB = new int[arrayA.length];
+        int[] buffer = new int[Main.BUF_SIZE];
 
         for (int i = 0; i < arrayA.length; i++) {
             arrayA[i] = i;
         }
-
-        int[] buffer = new int[Main.BUF_SIZE];
 
         int leftIndex = 0;
         int elementsNumToWrite = buffer.length;
@@ -28,7 +27,7 @@ public class SequentialMain {
                 System.arraycopy(buffer, 0, arrayB, leftIndex, elementsNumToWrite);
             }
 
-            leftIndex = leftIndex + buffer.length;
+            leftIndex += buffer.length;
             if (leftIndex + buffer.length > arrayA.length) {
                 elementsNumToWrite = arrayA.length - leftIndex;
             }
