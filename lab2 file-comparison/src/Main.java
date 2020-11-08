@@ -8,9 +8,7 @@ public class Main {
 
     public static final int LINES_NUM = 10;
     public static final int SYMBOLS_NUM = 10;
-
     public static boolean SHOULD_IT_WORK_IN_PARALLEL = true;
-
     public static boolean SHOULD_IT_DELETE_FILES_AFTER_WORK = true;
 
     public static void main(String[] args) throws InterruptedException, IOException {
@@ -18,6 +16,12 @@ public class Main {
         System.out.println("Лабораторная работа №.\n" +
                 "Синхронизация параллельных процессов. Сравнение файлов\n" +
                 "Выполнил студент группы 6138 Кузнецов А.П.\n");
+
+        System.out.println("НАСТРОЙКИ (задаются статическими полями класса Main):\n" +
+                "кол-во строк    в каждом файле .... " + LINES_NUM + "\n" +
+                "кол-во символов в каждой строке ... " + SYMBOLS_NUM + "\n" +
+                "работать параллельно? ............. " + SHOULD_IT_WORK_IN_PARALLEL + "\n" +
+                "удалить файлы после работы? ....... " + SHOULD_IT_DELETE_FILES_AFTER_WORK + "\n");
 
         final String[] filesNames = createFiles(LINES_NUM, SYMBOLS_NUM);
 
