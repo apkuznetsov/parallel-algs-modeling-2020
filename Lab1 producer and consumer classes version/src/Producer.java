@@ -12,7 +12,7 @@ public class Producer extends Thread {
     public void run() {
         try {
             for (int i : arrayA) {
-                buffer.put(i);
+                buffer.write(i);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

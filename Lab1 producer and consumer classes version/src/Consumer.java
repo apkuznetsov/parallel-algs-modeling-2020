@@ -12,7 +12,7 @@ public class Consumer extends Thread {
     public void run() {
         try {
             for (int i = 0; i < arrayB.length; i++) {
-                arrayB[i] = buffer.get();
+                arrayB[i] = buffer.read();
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
