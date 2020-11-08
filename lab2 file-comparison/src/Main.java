@@ -22,4 +22,29 @@ public class Main {
 
         fct.join();
     }
+
+    private static String[] createFiles(int linesNum, int symbolsNum) {
+
+        final String file1Name = "file1-" + linesNum + "x" + symbolsNum + ".txt";
+        final String file2Name = "file2-" + linesNum + "x" + symbolsNum + ".txt";
+
+        try (PrintWriter writer1 = new PrintWriter(file1Name, StandardCharsets.UTF_8);
+             PrintWriter writer2 = new PrintWriter(file2Name, StandardCharsets.UTF_8)) {
+
+            String strToWrite = "a".repeat(symbolsNum);
+
+            for (int rowIndex = 0; rowIndex < linesNum - 1; ++rowIndex) {
+                writer1.println(strToWrite);
+                writer2.println(strToWrite);
+            }
+
+            writer1.println("b");
+            writer2.println("c");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new String[]{file1Name, file2Name};
+    }
 }
