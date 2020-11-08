@@ -6,11 +6,20 @@ import java.nio.file.Paths;
 
 public class Main {
 
+    public static final int LINES_NUM = 10;
+    public static final int SYMBOLS_NUM = 10;
+
+    public static boolean SHOULD_IT_WORK_IN_PARALLEL = true;
+
+    public static boolean SHOULD_IT_DELETE_FILES_AFTER_WORK = true;
+
     public static void main(String[] args) throws InterruptedException, IOException {
 
         System.out.println("Лабораторная работа №.\n" +
                 "Синхронизация параллельных процессов. Сравнение файлов\n" +
                 "Выполнил студент группы 6138 Кузнецов А.П.\n");
+
+        final String[] filesNames = createFiles(LINES_NUM, SYMBOLS_NUM);
 
         FileReaderThread frt1 = new FileReaderThread(filesNames[0]);
         FileReaderThread frt2 = new FileReaderThread(filesNames[1]);
@@ -21,6 +30,11 @@ public class Main {
         fct.start();
 
         fct.join();
+
+        if (SHOULD_IT_DELETE_FILES_AFTER_WORK) {
+            Files.deleteIfExists(Paths.get(filesNames[0]));
+            Files.deleteIfExists(Paths.get(filesNames[1]));
+        }
     }
 
     private static String[] createFiles(int linesNum, int symbolsNum) {
