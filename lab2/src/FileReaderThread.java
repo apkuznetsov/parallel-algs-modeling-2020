@@ -78,4 +78,11 @@ class FileReaderThread extends Thread {
 
         return currLine;
     }
+
+    public void finish() {
+        locker.lock();
+        isMyWorkFinished = true;
+        readingNextLine.signal();
+        locker.unlock();
+    }
 }
