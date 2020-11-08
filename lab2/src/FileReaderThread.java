@@ -67,4 +67,15 @@ class FileReaderThread extends Thread {
         readingNextLine.signal();
         locker.unlock();
     }
+
+    public String currLine() {
+        locker.lock();
+        if (isMyTurn) {
+            // causes the current thread to wait until it is signalled
+            readingNextLineIsFinished.awaitUninterruptibly();
+        }
+        locker.unlock();
+
+        return currLine;
+    }
 }
