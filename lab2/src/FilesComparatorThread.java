@@ -31,4 +31,30 @@ public class FilesComparatorThread extends Thread {
         long timeConsumedMillis = finish - start;
         System.out.println("Time: " + timeConsumedMillis);
     }
+
+    private void runParallel() {
+        String file1Line;
+        String file2Line;
+        boolean isEndOfFiles;
+        int currStringsNum = 1;
+
+        while (true) {
+            file1.runReadLine();
+            file2.runReadLine();
+
+            file1Line = file1.currLine();
+            file2Line = file2.currLine();
+
+            isEndOfFiles = file1Line == null & file2Line == null;
+            if (isEndOfFiles) {
+                break;
+            }
+
+            if (!Objects.equals(file1Line, file2Line)) {
+                System.out.println("Number " + currStringsNum + ": line 1 = " + file1Line + ", line 2 = " + file2Line);
+            }
+
+            currStringsNum++;
+        }
+    }
 }
