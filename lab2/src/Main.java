@@ -1,15 +1,17 @@
 
 public class Main {
 
+    public static final String FILE1_PATH = "File1.txt";
+    public static final String FILE2_PATH = "File2.txt";
+
     public static void main(String[] args) {
 
-        File1Thread f1 = new File1Thread();
-        File2Thread f2 = new File2Thread();
-        FilesStringsComparatorThread fsc = new FilesStringsComparatorThread(f1, f2, false);
+        FileReaderThread frt1 = new FileReaderThread(FILE1_PATH);
+        FileReaderThread frt2 = new FileReaderThread(FILE2_PATH);
+        FilesComparatorThread fct = new FilesComparatorThread(frt1, frt2, false);
 
-        f1.start();
-        f2.start();
-        fsc.start();
-
+        frt1.start();
+        frt2.start();
+        fct.start();
     }
 }
