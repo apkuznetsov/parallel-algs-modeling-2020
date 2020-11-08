@@ -159,4 +159,5 @@ paket-files/
 .localhistory/
 
 *.class
+*.kotlin_module
 uiDesigner.xml
