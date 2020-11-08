@@ -17,4 +17,29 @@ public class Buffer {
     public Buffer(int bufferSize) {
         buffer = new int[bufferSize];
     }
+
+    public void write(int item) throws InterruptedException {
+        locker.lock();
+        try {
+
+            // ждать пока буфера не освободится:
+            if (bufferItemsNum == buffer.length) {
+                bufferNotEmpty.await();
+            }
+
+            buffer[writingIndex] = item;
+            writingIndex++;
+            bufferItemsNum++;
+
+            // для цикличности буфера:
+            if (writingIndex >= buffer.length) {
+                writingIndex = 0;
+            }
+
+            bufferNotFull.signalAll();
+
+        } finally {
+            locker.unlock();
+        }
+    }
 }
