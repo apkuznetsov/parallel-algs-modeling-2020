@@ -157,3 +157,6 @@ paket-files/
 
 # Local History for Visual Studio
 .localhistory/
+
+*.class
+uiDesigner.xml
