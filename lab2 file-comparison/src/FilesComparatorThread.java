@@ -15,7 +15,7 @@ public class FilesComparatorThread extends Thread {
 
     public void run() {
 
-        long start = System.currentTimeMillis();
+        long startMillis = System.currentTimeMillis();
 
         if (shouldItWorkInParallel) {
             runParallel();
@@ -26,10 +26,10 @@ public class FilesComparatorThread extends Thread {
         file1.finish();
         file2.finish();
 
-        long finish = System.currentTimeMillis();
+        long finishMillis = System.currentTimeMillis();
 
-        long timeConsumedMillis = finish - start;
-        System.out.println("Time: " + timeConsumedMillis);
+        long consumedMillis = finishMillis - startMillis;
+        System.out.println("Consumed millis: " + consumedMillis);
     }
 
     private void runParallel() {
@@ -51,7 +51,9 @@ public class FilesComparatorThread extends Thread {
             }
 
             if (!Objects.equals(file1Line, file2Line)) {
-                System.out.println("Number " + currStringsNum + ": line 1 = " + file1Line + ", line 2 = " + file2Line);
+                System.out.println("#" + currStringsNum + ":\n" +
+                        "file 1 line = " + file1Line + "\n" +
+                        "file 2 line = " + file2Line + "\n");
             }
 
             currStringsNum++;
@@ -76,7 +78,9 @@ public class FilesComparatorThread extends Thread {
             }
 
             if (!Objects.equals(file1Line, file2Line)) {
-                System.out.println("Number " + currStringsNum + ": line 1 = " + file1Line + ", line 2 = " + file2Line);
+                System.out.println("#" + currStringsNum + ":\n" +
+                        "file 1 line = " + file1Line + "\n" +
+                        "file 2 line = " + file2Line + "\n");
             }
 
             currStringsNum++;
