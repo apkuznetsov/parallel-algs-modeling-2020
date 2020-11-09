@@ -32,8 +32,6 @@ class FileReaderThread extends Thread {
             final Scanner scanner = new Scanner(new File(filePathName));
             while (true) {
                 if (!isMyTurn) {
-                    /* поток ожидает, пока не будет выполнено некоторое условие
-                     * и пока другой поток не вызовет методы signal/signalAll: */
                     readingNextLine.await();
                 }
 
@@ -50,8 +48,6 @@ class FileReaderThread extends Thread {
                     break;
                 }
 
-                /* сигнализирует, что поток, у которого ранее был вызван метод await(), может продолжить работу,
-                 * важно в конце вызвать метод signal/signalAll, чтобы избежать возможности взаимоблокировки потоков: */
                 readingNextLineIsFinished.signal();
             }
         } catch (IOException | InterruptedException e) {

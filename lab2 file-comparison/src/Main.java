@@ -25,15 +25,11 @@ public class Main {
 
         final String[] filesNames = createFiles(LINES_NUM, SYMBOLS_NUM);
 
-        FileReaderThread frt1 = new FileReaderThread(filesNames[0]);
-        FileReaderThread frt2 = new FileReaderThread(filesNames[1]);
-        FilesComparatorThread fct = new FilesComparatorThread(frt1, frt2, SHOULD_IT_WORK_IN_PARALLEL);
-
-        frt1.start();
-        frt2.start();
-        fct.start();
-
-        fct.join();
+        if (SHOULD_IT_WORK_IN_PARALLEL) {
+            parallel(filesNames);
+        } else {
+            sequential(filesNames);
+        }
 
         if (SHOULD_IT_DELETE_FILES_AFTER_WORK) {
             Files.deleteIfExists(Paths.get(filesNames[0]));
@@ -64,5 +60,25 @@ public class Main {
         }
 
         return new String[]{file1Name, file2Name};
+    }
+
+    private static void parallel(String[] filesNames) throws InterruptedException {
+        FileReaderThread frt1 = new FileReaderThread(filesNames[0]);
+        FileReaderThread frt2 = new FileReaderThread(filesNames[1]);
+        ParallelFilesComparatorThread pfct = new ParallelFilesComparatorThread(frt1, frt2);
+
+        frt1.start();
+        frt2.start();
+        pfct.start();
+        
+        frt1.join();
+        frt2.join();
+        pfct.join();
+    }
+
+    private static void sequential(String[] filesNames) throws InterruptedException {
+        SequentialFilesComparatorThread sfct = new SequentialFilesComparatorThread(filesNames);
+        sfct.start();
+        sfct.join();
     }
 }
