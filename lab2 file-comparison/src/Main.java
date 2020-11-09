@@ -25,7 +25,11 @@ public class Main {
 
         final String[] filesNames = createFiles(LINES_NUM, SYMBOLS_NUM);
 
-        parallel(filesNames);
+        if (SHOULD_IT_WORK_IN_PARALLEL) {
+            parallel(filesNames);
+        } else {
+            sequential(filesNames);
+        }
 
         if (SHOULD_IT_DELETE_FILES_AFTER_WORK) {
             Files.deleteIfExists(Paths.get(filesNames[0]));
@@ -66,7 +70,7 @@ public class Main {
         frt1.start();
         frt2.start();
         pfct.start();
-
+        
         frt1.join();
         frt2.join();
         pfct.join();
