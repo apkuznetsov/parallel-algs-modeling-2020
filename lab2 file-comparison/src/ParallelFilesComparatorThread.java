@@ -12,13 +12,12 @@ public class ParallelFilesComparatorThread extends Thread {
 
     public void run() {
 
-        long startMillis = System.currentTimeMillis();
-
         String file1Line;
         String file2Line;
         boolean isEndOfFiles;
         int currStringsNum = 1;
 
+        long startMillis = System.currentTimeMillis();
         while (true) {
             file1.runReadLine();
             file2.runReadLine();
@@ -39,11 +38,10 @@ public class ParallelFilesComparatorThread extends Thread {
 
             currStringsNum++;
         }
+        long finishMillis = System.currentTimeMillis();
 
         file1.finish();
         file2.finish();
-
-        long finishMillis = System.currentTimeMillis();
 
         long consumedMillis = finishMillis - startMillis;
         System.out.println("Consumed millis: " + consumedMillis);
