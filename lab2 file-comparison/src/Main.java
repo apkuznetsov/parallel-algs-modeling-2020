@@ -27,7 +27,7 @@ public class Main {
 
         FileReaderThread frt1 = new FileReaderThread(filesNames[0]);
         FileReaderThread frt2 = new FileReaderThread(filesNames[1]);
-        FilesComparatorThread fct = new FilesComparatorThread(frt1, frt2, SHOULD_IT_WORK_IN_PARALLEL);
+        FilesComparatorThread fct = new FilesComparatorThread(frt1, frt2);
 
         frt1.start();
         frt2.start();
