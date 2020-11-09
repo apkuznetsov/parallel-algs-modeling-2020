@@ -25,17 +25,7 @@ public class Main {
 
         final String[] filesNames = createFiles(LINES_NUM, SYMBOLS_NUM);
 
-        FileReaderThread frt1 = new FileReaderThread(filesNames[0]);
-        FileReaderThread frt2 = new FileReaderThread(filesNames[1]);
-        FilesComparatorThread fct = new FilesComparatorThread(frt1, frt2);
-
-        frt1.start();
-        frt2.start();
-        fct.start();
-
-        frt1.join();
-        frt2.join();
-        fct.join();
+        parallel(filesNames);
 
         if (SHOULD_IT_DELETE_FILES_AFTER_WORK) {
             Files.deleteIfExists(Paths.get(filesNames[0]));
@@ -66,5 +56,19 @@ public class Main {
         }
 
         return new String[]{file1Name, file2Name};
+    }
+
+    private static void parallel(String[] filesNames) throws InterruptedException {
+        FileReaderThread frt1 = new FileReaderThread(filesNames[0]);
+        FileReaderThread frt2 = new FileReaderThread(filesNames[1]);
+        FilesComparatorThread fct = new FilesComparatorThread(frt1, frt2);
+
+        frt1.start();
+        frt2.start();
+        fct.start();
+
+        frt1.join();
+        frt2.join();
+        fct.join();
     }
 }
