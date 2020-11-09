@@ -33,6 +33,8 @@ public class Main {
         frt2.start();
         fct.start();
 
+        frt1.join();
+        frt2.join();
         fct.join();
 
         if (SHOULD_IT_DELETE_FILES_AFTER_WORK) {
