@@ -71,4 +71,10 @@ public class Main {
         frt2.join();
         pfct.join();
     }
+
+    private static void sequential(String[] filesNames) throws InterruptedException {
+        SequentialFilesComparatorThread sfct = new SequentialFilesComparatorThread(filesNames);
+        sfct.start();
+        sfct.join();
+    }
 }
