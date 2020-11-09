@@ -1,11 +1,11 @@
 import java.util.Objects;
 
-public class FilesComparatorThread extends Thread {
+public class ParallelFilesComparatorThread extends Thread {
 
     private final FileReaderThread file1;
     private final FileReaderThread file2;
 
-    public FilesComparatorThread(FileReaderThread file1, FileReaderThread file2) {
+    public ParallelFilesComparatorThread(FileReaderThread file1, FileReaderThread file2) {
         this.file1 = file1;
         this.file2 = file2;
     }

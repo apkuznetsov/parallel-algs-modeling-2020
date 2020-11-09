@@ -61,14 +61,14 @@ public class Main {
     private static void parallel(String[] filesNames) throws InterruptedException {
         FileReaderThread frt1 = new FileReaderThread(filesNames[0]);
         FileReaderThread frt2 = new FileReaderThread(filesNames[1]);
-        FilesComparatorThread fct = new FilesComparatorThread(frt1, frt2);
+        ParallelFilesComparatorThread pfct = new ParallelFilesComparatorThread(frt1, frt2);
 
         frt1.start();
         frt2.start();
-        fct.start();
+        pfct.start();
 
         frt1.join();
         frt2.join();
-        fct.join();
+        pfct.join();
     }
 }
