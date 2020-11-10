@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 public class ParallelFindingPrimes {
 
@@ -9,7 +7,7 @@ public class ParallelFindingPrimes {
     private static final int MIN_THREADS_NUM = 1;
     private static final int MAX_THREADS_NUM = 64;
 
-    public static SortedSet<Integer> primes(final int lastNumber, final int threadsNum) {
+    public static ArrayList<Integer> primes(final int lastNumber, final int threadsNum) {
 
         if (lastNumber < MIN_LAST_NUMBER) {
             throw new IndexOutOfBoundsException();
@@ -20,10 +18,12 @@ public class ParallelFindingPrimes {
 
         List<Thread> threads = new ArrayList<>(threadsNum);
 
-        SortedSet<Integer> primes = new TreeSet<>();
+        ArrayList<Integer> primes = new ArrayList<Integer>(lastNumber / 2);
         primes.add(2);
+
         int[][] ranges = ranges(lastNumber, threadsNum);
 
+        long startMillis = System.currentTimeMillis();
         Thread currThread;
         for (int[] range : ranges) {
             currThread = new PrimesFinderThread(primes, range[0], range[1]);
@@ -38,6 +38,9 @@ public class ParallelFindingPrimes {
                 e.printStackTrace();
             }
         }
+        long finishMillis = System.currentTimeMillis();
+        long consumedMillis = finishMillis - startMillis;
+        System.out.println("Consumed millis: " + consumedMillis);
 
         return primes;
     }

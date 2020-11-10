@@ -1,12 +1,12 @@
-import java.util.SortedSet;
+import java.util.ArrayList;
 
 public class PrimesFinderThread extends Thread {
 
-    private final SortedSet<Integer> primes;
+    private final ArrayList<Integer> primes;
     private final int leftBound;
     private final int rightBound;
 
-    public PrimesFinderThread(SortedSet<Integer> primes, int leftBound, int rightBound) {
+    public PrimesFinderThread(ArrayList<Integer> primes, int leftBound, int rightBound) {
 
         if (leftBound > rightBound) {
             throw new IllegalArgumentException();
@@ -41,7 +41,7 @@ public class PrimesFinderThread extends Thread {
         double sqrtedNumber = Math.sqrt(number);
 
         synchronized (primes) {
-            while (primes.last() < (int) sqrtedNumber) {
+            while (primes.get(primes.size() - 1) < (int) sqrtedNumber) {
                 try {
                     primes.wait();
                 } catch (InterruptedException e) {
@@ -50,13 +50,13 @@ public class PrimesFinderThread extends Thread {
             }
         }
 
-        for (int prime : primes) {
-
-            if (prime > sqrtedNumber) {
+        // НЕ ПЕРЕПИСЫВАТЬ НА for (declaration : expression), А ТО ВЫБРОСИТСЯ CONCURRMODEXCEPTION:
+        for (int i = 0; i < primes.size(); i++) {
+            if (primes.get(i) > sqrtedNumber) {
                 return true;
             }
 
-            if (number % prime == 0) {
+            if (number % primes.get(i) == 0) {
                 return false;
             }
         }
