@@ -1,7 +1,7 @@
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class PrimesCounter {
+public class PrimesFinder {
 
     public static SortedSet<Integer> firstPrimes(int lastNumber) {
 

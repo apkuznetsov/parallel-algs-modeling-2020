@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        SortedSet<Integer> primes = PrimesCounter.firstPrimes(101);
+        SortedSet<Integer> primes = PrimesFinder.firstPrimes(101);
         System.out.println(primes);
     }
 }
