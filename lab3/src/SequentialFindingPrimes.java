@@ -1,15 +1,14 @@
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 public class SequentialFindingPrimes {
 
-    public static SortedSet<Integer> primes(int lastNumber) {
+    public static ArrayList<Integer> primes(int lastNumber) {
 
         if (lastNumber < 2) {
             throw new IndexOutOfBoundsException();
         }
 
-        SortedSet<Integer> primes = new TreeSet<>();
+        ArrayList<Integer> primes = new ArrayList<>(lastNumber / 2);
 
         long startMillis = System.currentTimeMillis();
         primes.add(2);
@@ -25,7 +24,7 @@ public class SequentialFindingPrimes {
         return primes;
     }
 
-    private static boolean isPrime(int number, SortedSet<Integer> primesBeforeNumber) {
+    private static boolean isPrime(int number, ArrayList<Integer> primesBeforeNumber) {
 
         /* если проверяемое число состоит хотя бы из двух множителей,
          * то ни одно из них не может превышать двоичный корень: */
