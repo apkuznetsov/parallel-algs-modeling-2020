@@ -15,7 +15,27 @@ public class PrimesCounter {
                 primes.add(i);
             }
         }
-        
+
         return primes;
+    }
+
+    private boolean isPrime(int number, List<Integer> primesBeforeNumber) {
+
+        /* если проверяемое число состоит хотя бы из двух множителей,
+         * то ни одно из них не может превышать двоичный корень: */
+        double sqrtedNumber = Math.sqrt(number);
+
+        for (int prime : primesBeforeNumber) {
+
+            if (prime > sqrtedNumber) {
+                return true;
+            }
+
+            if (number % prime == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
