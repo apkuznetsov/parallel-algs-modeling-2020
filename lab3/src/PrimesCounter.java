@@ -3,14 +3,16 @@ import java.util.List;
 
 public class PrimesCounter {
 
-    public List<Integer> firstPrimes(int count) {
+    public static List<Integer> firstPrimes(int lastNumber) {
 
-        List<Integer> primes = new ArrayList<>();
-        if (count > 0) {
-            primes.add(2);
+        if (lastNumber < 2) {
+            throw new IndexOutOfBoundsException();
         }
 
-        for (int i = 3; primes.size() < count; i += 2) {
+        List<Integer> primes = new ArrayList<>();
+        primes.add(2);
+
+        for (int i = 3; i <= lastNumber; i += 2) {
             if (isPrime(i, primes)) {
                 primes.add(i);
             }
@@ -19,7 +21,7 @@ public class PrimesCounter {
         return primes;
     }
 
-    private boolean isPrime(int number, List<Integer> primesBeforeNumber) {
+    private static boolean isPrime(int number, List<Integer> primesBeforeNumber) {
 
         /* если проверяемое число состоит хотя бы из двух множителей,
          * то ни одно из них не может превышать двоичный корень: */
