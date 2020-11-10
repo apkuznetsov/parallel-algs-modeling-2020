@@ -1,7 +1,10 @@
 public class Main {
 
+    private static final int LAST_NUMBER = 100_000;
+
     public static void main(String[] args) {
 
-        System.out.println(ParallelFindingPrimes.primes(103, 4));
+        SequentialFindingPrimes.primes(LAST_NUMBER);
+        ParallelFindingPrimes.primes(LAST_NUMBER, 2);
     }
 }
