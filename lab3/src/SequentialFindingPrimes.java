@@ -10,13 +10,17 @@ public class SequentialFindingPrimes {
         }
 
         SortedSet<Integer> primes = new TreeSet<>();
-        primes.add(2);
 
+        long startMillis = System.currentTimeMillis();
+        primes.add(2);
         for (int i = 3; i <= lastNumber; i += 2) {
             if (isPrime(i, primes)) {
                 primes.add(i);
             }
         }
+        long finishMillis = System.currentTimeMillis();
+        long consumedMillis = finishMillis - startMillis;
+        System.out.println("Consumed millis: " + consumedMillis);
 
         return primes;
     }
