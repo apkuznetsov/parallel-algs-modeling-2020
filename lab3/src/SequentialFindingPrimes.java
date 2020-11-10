@@ -3,7 +3,7 @@ import java.util.TreeSet;
 
 public class SequentialFindingPrimes {
 
-    public static SortedSet<Integer> firstPrimes(int lastNumber) {
+    public static SortedSet<Integer> primes(int lastNumber) {
 
         if (lastNumber < 2) {
             throw new IndexOutOfBoundsException();
