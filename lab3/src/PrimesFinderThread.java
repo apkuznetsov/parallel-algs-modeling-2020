@@ -26,10 +26,12 @@ public class PrimesFinderThread extends Thread {
             if (isPrime(i)) {
                 synchronized (primes) {
                     primes.add(i);
-                    notifyAll();
+                    primes.notifyAll();
                 }
             }
         }
+
+        System.out.println(Thread.currentThread().getName() + " finished " + "[" + leftBound + "; " + rightBound + "]");
     }
 
     private boolean isPrime(int number) {
@@ -38,11 +40,13 @@ public class PrimesFinderThread extends Thread {
          * то ни одно из них не может превышать двоичный корень: */
         double sqrtedNumber = Math.sqrt(number);
 
-        while (primes.last() < (int) sqrtedNumber) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        synchronized (primes) {
+            while (primes.last() < (int) sqrtedNumber) {
+                try {
+                    primes.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
