@@ -21,11 +21,12 @@ public class ParallelFindingPrimes {
         List<Thread> threads = new ArrayList<>(threadsNum);
 
         SortedSet<Integer> primes = new TreeSet<>();
+        primes.add(2);
         int[][] ranges = ranges(lastNumber, threadsNum);
 
         Thread currThread;
         for (int[] range : ranges) {
-            currThread = new PrimesFinder(primes, range[0], range[1]);
+            currThread = new PrimesFinderThread(primes, range[0], range[1]);
             currThread.start();
             threads.add(currThread);
         }
