@@ -1,10 +1,10 @@
-import java.util.List;
+import java.util.SortedSet;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        List<Integer> primes = PrimesCounter.firstPrimes(101);
+        SortedSet<Integer> primes = PrimesCounter.firstPrimes(101);
         System.out.println(primes);
     }
 }

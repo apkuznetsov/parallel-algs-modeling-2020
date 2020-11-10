@@ -1,15 +1,15 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class PrimesCounter {
 
-    public static List<Integer> firstPrimes(int lastNumber) {
+    public static SortedSet<Integer> firstPrimes(int lastNumber) {
 
         if (lastNumber < 2) {
             throw new IndexOutOfBoundsException();
         }
 
-        List<Integer> primes = new ArrayList<>();
+        SortedSet<Integer> primes = new TreeSet<>();
         primes.add(2);
 
         for (int i = 3; i <= lastNumber; i += 2) {
@@ -21,7 +21,7 @@ public class PrimesCounter {
         return primes;
     }
 
-    private static boolean isPrime(int number, List<Integer> primesBeforeNumber) {
+    private static boolean isPrime(int number, SortedSet<Integer> primesBeforeNumber) {
 
         /* если проверяемое число состоит хотя бы из двух множителей,
          * то ни одно из них не может превышать двоичный корень: */
