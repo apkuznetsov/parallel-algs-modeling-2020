@@ -10,9 +10,9 @@ public class Solver {
     public static final int MAX_N = 5;
 
     private final Body[] b;
-    private final int dt;
+    private final long dt;
 
-    public Solver(final int N, final int DT) {
+    public Solver(final int N, final long DT) {
 
         if (N < MIN_N || N > MAX_N) {
             throw new NOutOfBoundsException();
@@ -43,14 +43,14 @@ public class Solver {
         );
     }
 
-    private static Point dv(Body b, int dt) {
+    private static Point dv(Body b, long dt) {
         return new Point(
                 b.f().x() / b.m() * dt,
                 b.f().y() / b.m() * dt
         );
     }
 
-    private static Point dp(Body b, int dt, Point dv) {
+    private static Point dp(Body b, long dt, Point dv) {
         return new Point(
                 (b.v().x() + dv.x() / 2) * dt,
                 (b.v().y() + dv.y() / 2) * dt
