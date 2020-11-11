@@ -6,8 +6,8 @@ import static nbody.Gravity.G;
 
 public class Solver {
 
-    public static int MIN_N = 1;
-    public static int MAX_N = 5;
+    public static final int MIN_N = 1;
+    public static final int MAX_N = 5;
 
     public final Body[] b;
 
