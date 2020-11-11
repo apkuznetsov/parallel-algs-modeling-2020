@@ -24,4 +24,10 @@ public class Solver {
     public int N() {
         return b.length;
     }
+
+    private static double distance(Body b1, Body b2) {
+        return Math.sqrt(
+                Math.pow(b1.p().x() - b2.p().x(), 2) + Math.pow(b1.p().y() - b2.p().y(), 2)
+        );
+    }
 }
