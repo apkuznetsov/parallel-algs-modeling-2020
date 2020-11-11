@@ -2,6 +2,8 @@ package nbody;
 
 import nbody.exceptions.NOutOfBoundsException;
 
+import static nbody.Gravity.G;
+
 public class Solver {
 
     public static int MIN_N = 1;
@@ -23,6 +25,31 @@ public class Solver {
 
     public int N() {
         return b.length;
+    }
+
+    public void calcNForces() {
+        double distance;
+        double magnitude;
+        Point direction;
+
+        final int N = b.length;
+        for (int i = 1; i <= N - 1; i++) {
+            for (int j = i + 1; j <= N; j++) {
+                distance = distance(b[i], b[j]);
+                magnitude = magnitude(b[i], b[j], distance);
+                direction = direction(b[i], b[j]);
+
+                b[i].setF(
+                        b[i].f().x() + magnitude * direction.x() / distance,
+                        b[i].f().y() + magnitude * direction.y() / distance
+                );
+
+                b[j].setF(
+                        b[i].f().x() - magnitude * direction.x() / distance,
+                        b[i].f().y() - magnitude * direction.y() / distance
+                );
+            }
+        }
     }
 
     private static double distance(Body b1, Body b2) {
