@@ -10,8 +10,9 @@ public class Solver {
     public static final int MAX_N = 5;
 
     private final Body[] b;
+    private final int dt;
 
-    public Solver(final int N) {
+    public Solver(final int N, final int DT) {
 
         if (N < MIN_N || N > MAX_N) {
             throw new NOutOfBoundsException();
@@ -21,6 +22,8 @@ public class Solver {
         for (int i = 0; i < N; i++) {
             b[i] = new Body();
         }
+
+        dt = DT;
     }
 
     private static double distance(Body b1, Body b2) {
