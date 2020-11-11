@@ -43,6 +43,13 @@ public class Solver {
         );
     }
 
+    private static Point dv(Body b, int dt) {
+        return new Point(
+                b.f().x() / b.m() * dt,
+                b.f().y() / b.m() * dt
+        );
+    }
+
     public int N() {
         return b.length;
     }
