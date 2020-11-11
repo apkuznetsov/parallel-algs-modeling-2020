@@ -85,4 +85,26 @@ public class Solver {
             }
         }
     }
+
+    public void moveNBodies() {
+        Point dv; // dv = f/m * dt
+        Point dp; // dp = (v + dv/2) * dt
+
+        for (int i = 1; i <= b.length; i++) {
+            dv = dv(b[i], dt);
+            dp = dp(b[i], dt, dv);
+
+            b[i].setV(
+                    b[i].v().x() + dv.x(),
+                    b[i].v().y() + dv.y()
+            );
+
+            b[i].setP(
+                    b[i].p().x() + dp.x(),
+                    b[i].p().y() + dp.y()
+            );
+
+            b[i].setF(0.0, 0.0);
+        }
+    }
 }
