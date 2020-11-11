@@ -7,7 +7,7 @@ public class Solver {
     public static int MIN_N = 1;
     public static int MAX_N = 5;
 
-    public final Body[] body;
+    public final Body[] b;
 
     public Solver(final int N) {
 
@@ -15,13 +15,13 @@ public class Solver {
             throw new NOutOfBoundsException();
         }
 
-        body = new Body[N];
+        b = new Body[N];
         for (int i = 0; i < N; i++) {
-            body[i] = new Body();
+            b[i] = new Body();
         }
     }
 
     public int N() {
-        return body.length;
+        return b.length;
     }
 }
