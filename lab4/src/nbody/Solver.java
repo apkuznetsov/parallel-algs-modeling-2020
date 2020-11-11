@@ -10,9 +10,10 @@ public class Solver {
     public static final int MAX_N = 5;
 
     private final Body[] b;
+    private final long millis;
     private final long dt;
 
-    public Solver(final int N, final long DT) {
+    public Solver(final int N, final long MILLIS, final long DT) {
 
         if (N < MIN_N || N > MAX_N) {
             throw new NOutOfBoundsException();
@@ -23,6 +24,7 @@ public class Solver {
             b[i] = new Body();
         }
 
+        millis = MILLIS;
         dt = DT;
     }
 
