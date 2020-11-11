@@ -33,5 +33,11 @@ public class Solver {
 
     private static double magnitude(Body b1, Body b2, double b1b2distance) {
         return G * b1.m() * b2.m() / Math.pow(b1b2distance, 2);
-}
+    }
+
+    private static Point direction(Body b1, Body b2) {
+        return new Point(
+                b2.p().x() - b1.p().x(), b2.p().y() - b1.p().y()
+        );
+    }
 }
