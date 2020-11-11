@@ -7,8 +7,8 @@ public class Body {
     private static final double MIN_M = 0.1;
     private static final double MAX_M = 100;
 
-    private final Point p;
     private final double m;
+    private Point p;
     private Point v;
     private Point f;
 
@@ -42,7 +42,11 @@ public class Body {
     public Point f() {
         return f;
     }
-    
+
+    public void setP(double x, double y) {
+        this.p = new Point(x, y);
+    }
+
     public void setV(double x, double y) {
         this.v = new Point(x, y);
     }
