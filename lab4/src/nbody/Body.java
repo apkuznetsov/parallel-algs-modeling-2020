@@ -2,10 +2,10 @@ package nbody;
 
 import nbody.exceptions.MOutOfBoundsException;
 
-public class Body {
+import static nbody.Bodies.MAX_M;
+import static nbody.Bodies.MIN_M;
 
-    private static final double MIN_M = 0.1;
-    private static final double MAX_M = 100;
+public class Body {
 
     private final double m;
     private Point p;
