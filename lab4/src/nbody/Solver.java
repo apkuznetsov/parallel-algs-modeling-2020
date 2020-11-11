@@ -109,4 +109,11 @@ public class Solver {
             b[i].setF(0.0, 0.0);
         }
     }
+
+    public void run() {
+        for (long i = 0L; i < millis; i++) {
+            calcNForces();
+            moveNBodies();
+        }
+    }
 }
