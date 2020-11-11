@@ -4,7 +4,7 @@ public class Body {
 
     private final Point p;
     private final Point v;
-    private final Point f;
+    private Point f;
     private final double m;
 
     public Body() {
@@ -31,6 +31,10 @@ public class Body {
 
     public Point f() {
         return  f;
+    }
+
+    public void setF(double x, double y) {
+        this.f = new Point(x, y);
     }
 
     public double m() {
