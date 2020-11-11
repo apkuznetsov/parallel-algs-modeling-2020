@@ -50,6 +50,13 @@ public class Solver {
         );
     }
 
+    private static Point dp(Body b, int dt, Point dv) {
+        return new Point(
+                (b.v().x() + dv.x() / 2) * dt,
+                (b.v().y() + dv.y() / 2) * dt
+        );
+    }
+
     public int N() {
         return b.length;
     }
