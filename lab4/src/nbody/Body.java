@@ -3,32 +3,37 @@ package nbody;
 public class Body {
 
     private final Point p;
-    private double v;
-    private double m;
+    private final Point v;
+    private final Point f;
+    private final double m;
 
     public Body() {
-        p = new Point();
-        v = 0.0;
-        m = 0.0;
+        p = new Point(0.1, 0.1);
+        v = new Point(0.1, 0.1);
+        f = new Point(0.1, 0.1);
+        m = 0.1;
+    }
+
+    public Body(double m) {
+        p = new Point(0.1, 0.1);
+        v = new Point(0.1, 0.1);
+        f = new Point(0.1, 0.1);
+        this.m = m;
     }
 
     public Point p() {
-        return  p;
+        return p;
     }
 
-    public double v() {
-        return  v;
-    }
-
-    public double m() {
+    public Point v() {
         return v;
     }
 
-    public void setV(double v) {
-        this.v = v;
+    public Point f() {
+        return  f;
     }
 
-    public void setM(double m) {
-        this.m = m;
+    public double m() {
+        return m;
     }
 }
