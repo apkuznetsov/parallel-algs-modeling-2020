@@ -30,4 +30,8 @@ public class Solver {
                 Math.pow(b1.p().x() - b2.p().x(), 2) + Math.pow(b1.p().y() - b2.p().y(), 2)
         );
     }
+
+    private static double magnitude(Body b1, Body b2, double b1b2distance) {
+        return G * b1.m() * b2.m() / Math.pow(b1b2distance, 2);
+}
 }
