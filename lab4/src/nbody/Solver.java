@@ -8,6 +8,7 @@ public class Solver {
     public static int MAX_N = 5;
 
     public final int N; // публичное поле, потому что константа
+    public final Body[] body;
 
     public Solver(final int N) {
 
@@ -16,5 +17,10 @@ public class Solver {
         }
 
         this.N = N;
+
+        body = new Body[N];
+        for (int i = 0; i < N; i++) {
+            body[i] = new Body();
+        }
     }
 }
