@@ -9,7 +9,7 @@ public class Solver {
     public static final int MIN_N = 1;
     public static final int MAX_N = 5;
 
-    public final Body[] b;
+    private final Body[] b;
 
     public Solver(final int N) {
 
