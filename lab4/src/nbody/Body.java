@@ -9,8 +9,8 @@ public class Body {
 
     private final Point p;
     private final Point v;
-    private Point f;
     private final double m;
+    private Point f;
 
     public Body() {
         p = new Point(0.1, 0.1);
@@ -40,7 +40,7 @@ public class Body {
     }
 
     public Point f() {
-        return  f;
+        return f;
     }
 
     public void setF(double x, double y) {
