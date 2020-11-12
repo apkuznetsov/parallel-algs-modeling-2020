@@ -29,7 +29,12 @@ public class Solver {
         return b.length;
     }
 
-    public void calcNForces() {
+    public void recalcNBodiesCoords() {
+        calcNForces();
+        moveNBodies();
+    }
+
+    private void calcNForces() {
         double distance;
         double magnitude;
         Point direction;
@@ -54,7 +59,7 @@ public class Solver {
         }
     }
 
-    public void moveNBodies() {
+    private void moveNBodies() {
         Point dv; // dv = f/m * dt
         Point dp; // dp = (v + dv/2) * dt
 
@@ -73,13 +78,6 @@ public class Solver {
             );
 
             b[i].setF(0.0, 0.0);
-        }
-    }
-
-    public void run() {
-        for (long i = 0L; i < millis; i++) {
-            calcNForces();
-            moveNBodies();
         }
     }
 }
