@@ -27,6 +27,14 @@ public class Solver {
         return b.length;
     }
 
+    public int bodyX(int index) {
+        return (int) b[index].p().x();
+    }
+
+    public int bodyY(int index) {
+        return (int) b[index].p().y();
+    }
+
     public void recalcNBodiesCoords() {
         calcNForces();
         moveNBodies();
