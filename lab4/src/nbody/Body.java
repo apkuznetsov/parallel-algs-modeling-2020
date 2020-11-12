@@ -19,16 +19,11 @@ public class Body {
         m = MIN_M;
     }
 
-    public Body(double m) {
-
-        if (m < MIN_M || m > MAX_M) {
-            throw new MOutOfBoundsException();
-        }
-
-        p = new Point(0.1, 0.1);
+    public Body(double x, double y) {
+        p = new Point(x, y);
         v = new Point(0.1, 0.1);
         f = new Point(0.1, 0.1);
-        this.m = m;
+        m = MIN_M;
     }
 
     public Point p() {
