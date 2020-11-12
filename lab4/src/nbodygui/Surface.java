@@ -6,8 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-import static nbodygui.Surfaces.DELAY;
-import static nbodygui.Surfaces.MAX_POINTS_NUM;
+import static nbodygui.Surfaces.*;
 
 public class Surface extends JPanel implements ActionListener {
 
@@ -28,7 +27,7 @@ public class Surface extends JPanel implements ActionListener {
 
     private void drawRandomPoints(Graphics gr) {
         Graphics2D graphics = (Graphics2D) gr;
-        graphics.setPaint(Color.blue);
+        graphics.setPaint(POINT_COLOR);
 
         int width = getWidth();
         int height = getHeight();
@@ -39,7 +38,7 @@ public class Surface extends JPanel implements ActionListener {
         for (int i = 0; i < MAX_POINTS_NUM; i++) {
             x = Math.abs(random.nextInt()) % width;
             y = Math.abs(random.nextInt()) % height;
-            graphics.drawLine(x, y, x, y);
+            graphics.fillOval(x, y, POINT_SIZE, POINT_SIZE);
         }
     }
 
