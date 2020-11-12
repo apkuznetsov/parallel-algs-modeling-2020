@@ -1,6 +1,7 @@
 package nbodygui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -10,6 +11,17 @@ public class Frame extends JFrame {
 
     public Frame() {
         initGui();
+    }
+
+    public static void main(String[] args) {
+
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Frame frame = new Frame();
+                frame.setVisible(true);
+            }
+        });
     }
 
     private void initGui() {
