@@ -6,9 +6,6 @@ import static nbody.Bodies.*;
 
 public class Solver {
 
-    public static final int MIN_N = 1;
-    public static final int MAX_N = 5;
-
     private final Body[] b;
     private final long millis;
     private final long dt;
