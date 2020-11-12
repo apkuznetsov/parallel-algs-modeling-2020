@@ -10,17 +10,13 @@ import static nbodygui.Surfaces.*;
 
 public class Surface extends JPanel implements ActionListener {
 
-    private Timer timer;
+    private final Timer timer;
 
     public Surface() {
-        initTimer();
-    }
-
-    private void initTimer() {
         timer = new Timer(DELAY, this);
         timer.start();
     }
-
+    
     public Timer timer() {
         return timer;
     }
