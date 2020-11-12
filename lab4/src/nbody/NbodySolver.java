@@ -4,12 +4,12 @@ import nbody.exceptions.NOutOfBoundsException;
 
 import static nbody.Bodies.*;
 
-public class Solver {
+public class NbodySolver {
 
     private final Body[] b;
     private final int dt;
 
-    public Solver(final int N, final int DT) {
+    public NbodySolver(final int N, final int DT) {
 
         if (N < MIN_N || N > MAX_N) {
             throw new NOutOfBoundsException();
