@@ -10,6 +10,7 @@ import static nbodygui.Surfaces.TITLE;
 public class Frame extends JFrame {
 
     public Frame() {
+        super(TITLE);
         initGui();
     }
 
@@ -37,8 +38,8 @@ public class Frame extends JFrame {
             }
         });
 
-        setTitle(TITLE);
-        setSize(WIDTH, HEIGHT);
+        setSize(Surfaces.WIDTH, Surfaces.HEIGHT);
+        setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
