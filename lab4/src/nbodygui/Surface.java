@@ -12,12 +12,11 @@ import static nbodygui.Surfaces.*;
 
 public class Surface extends JPanel implements ActionListener {
 
-    private final Point[] point;
+    private final NbodySolver solver;
     private final Timer timer;
 
     public Surface(NbodySolver solver) {
-        point = new Point[MAX_POINTS_NUM];
-
+        this.solver = solver;
         timer = new Timer(solver.DT(), this);
         timer.start();
     }
@@ -30,14 +29,17 @@ public class Surface extends JPanel implements ActionListener {
         Graphics2D graphics = (Graphics2D) gr;
         graphics.setPaint(POINT_COLOR);
 
-        for (Point value : point) {
-            graphics.fillOval(value.x, value.y, POINT_SIZE, POINT_SIZE);
+        for (int i = 0; i < solver.N(); i++) {
+            int x = solver.bodyX(i);
+            int y = solver.bodyY(i);
+            graphics.fillOval(x, y, POINT_SIZE, POINT_SIZE);
         }
     }
 
     @Override
     public void paintComponent(Graphics gr) {
         super.paintComponent(gr);
+        solver.recalcNBodiesCoords();
         drawRandomPoints(gr);
     }
 
