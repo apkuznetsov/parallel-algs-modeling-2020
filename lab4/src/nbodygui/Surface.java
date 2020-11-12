@@ -16,10 +16,14 @@ public class Surface extends JPanel implements ActionListener {
     public Surface() {
         initTimer();
     }
-    
+
     private void initTimer() {
         timer = new Timer(DELAY, this);
         timer.start();
+    }
+
+    public Timer timer() {
+        return timer;
     }
 
     private void drawRandomPoints(Graphics gr) {

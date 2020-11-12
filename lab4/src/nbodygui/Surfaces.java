@@ -2,6 +2,7 @@ package nbodygui;
 
 public class Surfaces {
 
+    public static final String TITLE = "n-body problem solver";
     public static final int WIDTH = 500;
     public static final int HEIGHT = 500;
 
