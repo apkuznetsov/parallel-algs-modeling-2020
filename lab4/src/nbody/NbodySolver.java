@@ -10,7 +10,7 @@ public class NbodySolver {
     private final Body[] b;
     private final int dt;
 
-    public NbodySolver(final int N, final int DT) {
+    public NbodySolver(final int N, final int DT, java.awt.Point[] point) {
 
         if (N < MIN_N || N > MAX_N) {
             throw new NOutOfBoundsException();
@@ -22,7 +22,7 @@ public class NbodySolver {
 
         b = new Body[N];
         for (int i = 0; i < N; i++) {
-            b[i] = new Body();
+            b[i] = new Body(point[i].x, point[i].y);
         }
 
         dt = DT;

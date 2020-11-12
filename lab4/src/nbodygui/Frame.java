@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Random;
 
 import static nbodygui.Surfaces.TITLE;
 
@@ -27,7 +28,17 @@ public class Frame extends JFrame {
 
     private void initGui() {
 
-        final NbodySolver solver = new NbodySolver(Bodies.MAX_N, Bodies.MIN_DT);
+        Point[] point = new Point[Bodies.MAX_N];
+        int x, y;
+        Random random = new Random();
+
+        for (int i = 0; i < point.length; i++) {
+            x = Math.abs(random.nextInt()) % Surfaces.WIDTH;
+            y = Math.abs(random.nextInt()) % Surfaces.HEIGHT;
+            point[i] = new Point(x, y);
+        }
+
+        final NbodySolver solver = new NbodySolver(Bodies.MAX_N, Bodies.MIN_DT, point);
         final Surface surface = new Surface(solver);
         add(surface);
 
