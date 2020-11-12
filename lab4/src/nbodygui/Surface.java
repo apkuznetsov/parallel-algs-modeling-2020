@@ -9,17 +9,17 @@ import java.util.Random;
 import static nbodygui.Guis.DELAY;
 import static nbodygui.Guis.MAX_POINTS_NUM;
 
-public class Gui extends JPanel implements ActionListener {
+public class Surface extends JPanel implements ActionListener {
     private JPanel panel;
     private Timer timer;
 
-    public Gui() {
+    public Surface() {
         initTimer();
     }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("n-body problem solver");
-        frame.setContentPane(new Gui().panel);
+        frame.setContentPane(new Surface().panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(WIDTH, HEIGHT);
         frame.setVisible(true);
