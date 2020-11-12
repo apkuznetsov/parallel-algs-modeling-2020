@@ -27,7 +27,7 @@ public class Frame extends JFrame {
 
     private void initGui() {
 
-        final NbodySolver solver = new NbodySolver(Bodies.MAX_N, Bodies.DT);
+        final NbodySolver solver = new NbodySolver(Bodies.MAX_N, Bodies.MIN_DT);
         final Surface surface = new Surface(solver);
         add(surface);
 

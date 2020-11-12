@@ -10,7 +10,8 @@ public class Bodies {
     public static final double MIN_M = 1e15;
     public static final double MAX_M = 3e15;
 
-    public static final int DT = 150;
+    public static final int MIN_DT = 150;
+    public static final int MAX_DT = 500;
 
     public static double distance(Body b1, Body b2) {
         return Math.sqrt(
