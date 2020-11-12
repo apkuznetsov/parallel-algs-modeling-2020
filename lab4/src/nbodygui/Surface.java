@@ -6,8 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-import static nbodygui.Guis.DELAY;
-import static nbodygui.Guis.MAX_POINTS_NUM;
+import static nbodygui.Surfaces.DELAY;
+import static nbodygui.Surfaces.MAX_POINTS_NUM;
 
 public class Surface extends JPanel implements ActionListener {
     private JPanel panel;
