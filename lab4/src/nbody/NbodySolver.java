@@ -21,7 +21,7 @@ public class NbodySolver {
         }
 
         b = new Body[N];
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < b.length; i++) {
             b[i] = new Body(point[i].x, point[i].y);
         }
 
