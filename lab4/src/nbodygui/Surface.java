@@ -20,20 +20,6 @@ public class Surface extends JPanel implements ActionListener {
 
         timer = new Timer(solver.DT(), this);
         timer.start();
-
-        initPoints();
-    }
-
-    private void initPoints() {
-
-        int x, y;
-        Random random = new Random();
-
-        for (int i = 0; i < point.length; i++) {
-            x = Math.abs(random.nextInt()) % Surfaces.WIDTH;
-            y = Math.abs(random.nextInt()) % Surfaces.HEIGHT;
-            point[i] = new Point(x, y);
-        }
     }
 
     public Timer timer() {
