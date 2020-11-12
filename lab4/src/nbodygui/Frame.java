@@ -1,5 +1,8 @@
 package nbodygui;
 
+import nbody.Bodies;
+import nbody.NbodySolver;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -24,7 +27,8 @@ public class Frame extends JFrame {
 
     private void initGui() {
 
-        final Surface surface = new Surface();
+        final NbodySolver solver = new NbodySolver(Bodies.MAX_N, Bodies.DT);
+        final Surface surface = new Surface(solver);
         add(surface);
 
         addWindowListener(new WindowAdapter() {

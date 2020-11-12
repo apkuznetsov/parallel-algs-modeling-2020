@@ -27,6 +27,10 @@ public class NbodySolver {
         return b.length;
     }
 
+    public int DT() {
+        return dt;
+    }
+
     public int bodyX(int index) {
         return (int) b[index].p().x();
     }

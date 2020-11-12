@@ -1,5 +1,7 @@
 package nbodygui;
 
+import nbody.NbodySolver;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,10 +15,10 @@ public class Surface extends JPanel implements ActionListener {
     private final Point[] point;
     private final Timer timer;
 
-    public Surface() {
+    public Surface(NbodySolver solver) {
         point = new Point[MAX_POINTS_NUM];
 
-        timer = new Timer(DELAY, this);
+        timer = new Timer(solver.DT(), this);
         timer.start();
 
         initPoints();

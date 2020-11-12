@@ -3,12 +3,14 @@ package nbody;
 public class Bodies {
 
     public static final double G = 6.67e-11;
-    
+
     public static final int MIN_N = 1;
     public static final int MAX_N = 5;
 
     public static final double MIN_M = 0.1;
     public static final double MAX_M = 100;
+
+    public static final int DT = 150;
 
     public static double distance(Body b1, Body b2) {
         return Math.sqrt(
