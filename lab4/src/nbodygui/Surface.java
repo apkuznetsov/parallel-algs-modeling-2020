@@ -1,5 +1,7 @@
 package nbodygui;
 
+import nbody.NbodySolver;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,28 +12,13 @@ import static nbodygui.Surfaces.*;
 
 public class Surface extends JPanel implements ActionListener {
 
-    private final Point[] point;
+    private final NbodySolver solver;
     private final Timer timer;
 
-    public Surface() {
-        point = new Point[MAX_POINTS_NUM];
-
-        timer = new Timer(DELAY, this);
+    public Surface(NbodySolver solver) {
+        this.solver = solver;
+        timer = new Timer(solver.DT(), this);
         timer.start();
-
-        initPoints();
-    }
-
-    private void initPoints() {
-
-        int x, y;
-        Random random = new Random();
-
-        for (int i = 0; i < point.length; i++) {
-            x = Math.abs(random.nextInt()) % Surfaces.WIDTH;
-            y = Math.abs(random.nextInt()) % Surfaces.HEIGHT;
-            point[i] = new Point(x, y);
-        }
     }
 
     public Timer timer() {
@@ -42,14 +29,17 @@ public class Surface extends JPanel implements ActionListener {
         Graphics2D graphics = (Graphics2D) gr;
         graphics.setPaint(POINT_COLOR);
 
-        for (Point value : point) {
-            graphics.fillOval(value.x, value.y, POINT_SIZE, POINT_SIZE);
+        for (int i = 0; i < solver.N(); i++) {
+            int x = solver.bodyX(i);
+            int y = solver.bodyY(i);
+            graphics.fillOval(x, y, POINT_SIZE, POINT_SIZE);
         }
     }
 
     @Override
     public void paintComponent(Graphics gr) {
         super.paintComponent(gr);
+        solver.recalcNBodiesCoords();
         drawRandomPoints(gr);
     }
 
