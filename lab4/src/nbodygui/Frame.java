@@ -28,7 +28,7 @@ public class Frame extends JFrame {
 
     private void initGui() {
 
-        Point[] point = new Point[Bodies.MAX_N];
+        Point[] point = new Point[Bodies.MIN_N];
         int x, y;
         Random random = new Random();
 
@@ -38,7 +38,7 @@ public class Frame extends JFrame {
             point[i] = new Point(x, y);
         }
 
-        final NbodySolver solver = new NbodySolver(Bodies.MAX_N, Bodies.MIN_DT, point);
+        final NbodySolver solver = new NbodySolver(point.length, Bodies.MIN_DT, point);
         final Surface surface = new Surface(solver);
         add(surface);
 
