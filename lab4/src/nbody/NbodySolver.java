@@ -1,5 +1,6 @@
 package nbody;
 
+import nbody.exceptions.DTOutOfBoundsException;
 import nbody.exceptions.NOutOfBoundsException;
 
 import static nbody.Bodies.*;
@@ -13,6 +14,10 @@ public class NbodySolver {
 
         if (N < MIN_N || N > MAX_N) {
             throw new NOutOfBoundsException();
+        }
+
+        if (DT < MIN_DT|| DT > MAX_DT) {
+            throw new DTOutOfBoundsException();
         }
 
         b = new Body[N];
