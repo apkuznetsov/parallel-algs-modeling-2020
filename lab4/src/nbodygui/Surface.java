@@ -19,9 +19,21 @@ public class Surface extends JPanel implements ActionListener {
         timer = new Timer(DELAY, this);
         timer.start();
 
-        initPoint();
+        initPoints();
     }
-    
+
+    private void initPoints() {
+
+        int x, y;
+        Random random = new Random();
+
+        for (int i = 0; i < point.length; i++) {
+            x = Math.abs(random.nextInt()) % Surfaces.WIDTH;
+            y = Math.abs(random.nextInt()) % Surfaces.HEIGHT;
+            point[i] = new Point(x, y);
+        }
+    }
+
     public Timer timer() {
         return timer;
     }
@@ -30,16 +42,8 @@ public class Surface extends JPanel implements ActionListener {
         Graphics2D graphics = (Graphics2D) gr;
         graphics.setPaint(POINT_COLOR);
 
-        int width = getWidth();
-        int height = getHeight();
-
-        Random random = new Random();
-
-        int x, y;
-        for (int i = 0; i < MAX_POINTS_NUM; i++) {
-            x = Math.abs(random.nextInt()) % width;
-            y = Math.abs(random.nextInt()) % height;
-            graphics.fillOval(x, y, POINT_SIZE, POINT_SIZE);
+        for (Point value : point) {
+            graphics.fillOval(value.x, value.y, POINT_SIZE, POINT_SIZE);
         }
     }
 
