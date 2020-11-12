@@ -13,16 +13,16 @@ public class Body {
     private Point f;
 
     public Body() {
-        p = new Point(0.1, 0.1);
-        v = new Point(0.1, 0.1);
-        f = new Point(0.1, 0.1);
+        p = new Point(0.0, 0.0);
+        v = new Point(0.0, 0.0);
+        f = new Point(0.0, 0.0);
         m = MIN_M;
     }
 
     public Body(double x, double y) {
         p = new Point(x, y);
-        v = new Point(0.1, 0.1);
-        f = new Point(0.1, 0.1);
+        v = new Point(0.0, 0.0);
+        f = new Point(0.0, 0.0);
         m = MIN_M;
     }
 
