@@ -2,12 +2,14 @@ package nbodygui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
 import static nbodygui.Guis.DELAY;
 import static nbodygui.Guis.MAX_POINTS_NUM;
 
-public class Gui {
+public class Gui extends JPanel implements ActionListener {
     private JPanel panel;
     private Timer timer;
 
@@ -26,7 +28,7 @@ public class Gui {
     private void initTimer() {
         timer = new Timer(DELAY, this);
         timer.start();
-}
+    }
 
     private void drawRandomPoints(Graphics gr) {
         Graphics2D graphics = (Graphics2D) gr;
@@ -44,3 +46,15 @@ public class Gui {
             graphics.drawLine(x, y, x, y);
         }
     }
+
+    @Override
+    public void paintComponent(Graphics gr) {
+        paintComponent(gr);
+        drawRandomPoints(gr);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+        repaint();
+    }
+}
