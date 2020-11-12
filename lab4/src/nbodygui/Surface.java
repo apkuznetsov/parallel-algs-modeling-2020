@@ -10,21 +10,13 @@ import static nbodygui.Surfaces.DELAY;
 import static nbodygui.Surfaces.MAX_POINTS_NUM;
 
 public class Surface extends JPanel implements ActionListener {
-    private JPanel panel;
+
     private Timer timer;
 
     public Surface() {
         initTimer();
     }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("n-body problem solver");
-        frame.setContentPane(new Surface().panel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(WIDTH, HEIGHT);
-        frame.setVisible(true);
-    }
-
+    
     private void initTimer() {
         timer = new Timer(DELAY, this);
         timer.start();
