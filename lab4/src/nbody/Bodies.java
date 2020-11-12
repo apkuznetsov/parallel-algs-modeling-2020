@@ -4,13 +4,13 @@ public class Bodies {
 
     public static final double G = 6.67e-11;
 
-    public static final int MIN_N = 1;
+    public static final int MIN_N = 3;
     public static final int MAX_N = 5;
 
-    public static final double MIN_M = 1e15;
+    public static final double MIN_M = 1e9;
     public static final double MAX_M = 3e15;
 
-    public static final int MIN_DT = 150;
+    public static final int MIN_DT = 16;
     public static final int MAX_DT = 500;
 
     public static double distance(Body b1, Body b2) {
