@@ -7,9 +7,9 @@ import static nbody.Bodies.*;
 public class Solver {
 
     private final Body[] b;
-    private final long dt;
+    private final int dt;
 
-    public Solver(final int N, final long DT) {
+    public Solver(final int N, final int DT) {
 
         if (N < MIN_N || N > MAX_N) {
             throw new NOutOfBoundsException();
