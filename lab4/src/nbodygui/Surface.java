@@ -10,11 +10,16 @@ import static nbodygui.Surfaces.*;
 
 public class Surface extends JPanel implements ActionListener {
 
+    private final Point[] point;
     private final Timer timer;
 
     public Surface() {
+        point = new Point[MAX_POINTS_NUM];
+
         timer = new Timer(DELAY, this);
         timer.start();
+
+        initPoint();
     }
     
     public Timer timer() {
